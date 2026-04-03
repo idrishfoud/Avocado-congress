@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>AVOCADO CONGRESS 2026 | Inscription - GMC Maroc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <style>
+    :root {
+      --g0:#061a0c;--g1:#0d3318;--g2:#1a5c2a;--g3:#2b9348;--g4:#3ab54a;--g5:#7ed88a;
+      --g-light:#c8f0ce;--g-pale:#edf9f0;--cream:#faf8f0;
+      --brown:#6D381C;--brown-dk:#3d1f0d;
+      --gold:#D4AF37;--gold-lt:#f5e090;--diamond:#4A9FD5;--silver:#9e9e9e;--bronze:#CD7F32;
+      --red:#d4101c;--txt:#1a1a1a;--txt-lt:#555;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;overflow-x:hidden;}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--txt);overflow-x:hidden;}
+
+    /* ── TOPBAR ── */
+    .topbar{
+      position:fixed;top:0;left:0;right:0;z-index:2000;
+      background:var(--g0);height:36px;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 40px;font-size:0.74rem;color:rgba(255,255,255,.6);
+    }
+    .topbar-left{display:flex;gap:24px;}
+    .topbar-left a,.topbar-right a{color:rgba(255,255,255,.7);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color .2s;}
+    .topbar-left a:hover,.topbar-right a:hover{color:var(--g5);}
+    .topbar-right{display:flex;gap:12px;align-items:center;}
+    .tb-social a{width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;font-size:.8rem;background:rgba(255,255,255,.08);transition:background .2s;}
+    .tb-social a:hover{background:var(--g3);color:#fff;}
+    .tb-sep{width:1px;height:16px;background:rgba(255,255,255,.14);}
+
+    /* ── NAVBAR ── */
+    .navbar{
+      position:fixed;top:36px;left:0;right:0;z-index:1900;
+      height:70px;display:flex;align-items:center;justify-content:space-between;
+      padding:0 40px;
+      background:rgba(250,248,240,.96);backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(26,92,42,.1);
+      transition:all .35s ease;
+    }
+    .navbar.scrolled{top:0;height:62px;background:rgba(255,255,255,.97);box-shadow:0 4px 32px rgba(13,51,24,.13);border-bottom-color:transparent;}
+
+    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+    .nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--g2),var(--g4));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 14px rgba(26,92,42,.3);transition:transform .3s;}
+    .nav-logo:hover .nav-logo-icon{transform:rotate(-8deg) scale(1.06);}
+    .nav-logo-text{display:flex;flex-direction:column;line-height:1.1;}
+    .nav-logo-main{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.12em;color:var(--g2);}
+    .nav-logo-sub{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--g3);opacity:.8;}
+
+    .nav-center{display:flex;align-items:center;gap:2px;list-style:none;}
+    .nav-item{position:relative;}
+    .nav-link{font-size:.8rem;font-weight:500;color:var(--txt);text-decoration:none;letter-spacing:.05em;text-transform:uppercase;padding:8px 14px;border-radius:8px;display:flex;align-items:center;gap:5px;transition:background .2s,color .2s;white-space:nowrap;}
+    .nav-link:hover,.nav-item:hover>.nav-link{background:var(--g-pale);color:var(--g2);}
+    .nav-link .chev{font-size:.6rem;margin-top:1px;transition:transform .25s;}
+    .nav-item:hover .chev{transform:rotate(180deg);}
+
+    .nav-drop{position:absolute;top:calc(100% + 10px);left:0;background:#fff;border-radius:16px;padding:8px;min-width:220px;box-shadow:0 20px 60px rgba(13,51,24,.15);border:1px solid rgba(26,92,42,.08);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s,visibility .25s;}
+    .nav-item:hover .nav-drop{opacity:1;visibility:visible;pointer-events:all;transform:translateY(0);}
+    .nav-drop a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-size:.84rem;font-weight:500;color:var(--txt);text-decoration:none;transition:background .2s,color .2s;}
+    .nav-drop a:hover{background:var(--g-pale);color:var(--g2);}
+    .dd-ic{width:32px;height:32px;border-radius:8px;background:var(--g-pale);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+    .dd-lbl{font-size:.7rem;color:var(--txt-lt);font-weight:400;display:block;}
+    .dd-sep{height:1px;background:rgba(26,92,42,.06);margin:6px 0;}
+
+    .nav-mega{left:50%;transform:translateX(-50%) translateY(8px);min-width:520px;}
+    .nav-item:hover .nav-mega{transform:translateX(-50%) translateY(0);}
+    .mega-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+    .mega-ttl{font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--g3);padding:6px 14px 3px;}
+
+    .nav-right{display:flex;align-items:center;gap:10px;}
+    .nav-search-btn{width:38px;height:38px;border-radius:10px;background:var(--g-pale);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--g2);font-size:1rem;transition:background .2s;}
+    .nav-search-btn:hover{background:var(--g-light);}
+    .nav-cta{background:linear-gradient(135deg,var(--g2),var(--g4));color:#fff!important;text-decoration:none!important;padding:10px 22px;border-radius:30px;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:all .3s;box-shadow:0 4px 16px rgba(26,92,42,.25);display:flex;align-items:center;gap:7px;}
+    .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,92,42,.4);}
+    .cta-dot{width:7px;height:7px;background:var(--gold-lt);border-radius:50%;animation:pdot 2s infinite;}
+    @keyframes pdot{0%,100%{transform:scale(1)}50%{transform:scale(1.8)}}
+
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border-radius:8px;background:transparent;border:none;transition:background .2s;}
+    .hamburger:hover{background:var(--g-pale);}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--g2);border-radius:2px;transition:all .3s ease;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+    .mobile-drawer{display:none;position:fixed;top:106px;left:0;right:0;bottom:0;background:#fff;z-index:1800;padding:24px 24px 40px;overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);}
+    .mobile-drawer.open{transform:translateX(0);}
+    .mob-link{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(26,92,42,.08);font-size:1rem;font-weight:600;color:var(--txt);text-decoration:none;cursor:pointer;}
+    .mob-link:hover{color:var(--g2);}
+    .mob-sub{display:none;padding:8px 0 0 16px;}
+    .mob-sub a{display:block;padding:10px 0;font-size:.9rem;color:var(--txt-lt);text-decoration:none;}
+    .mob-sub a:hover{color:var(--g2);}
+    .mob-cta{margin-top:24px;display:block;text-align:center;background:linear-gradient(135deg,var(--g2),var(--g4));color:#fff!important;text-decoration:none;padding:16px;border-radius:14px;font-weight:700;font-size:1rem;}
+
+    .search-overlay{position:fixed;inset:0;z-index:3000;background:rgba(6,26,12,.9);backdrop-filter:blur(12px);display:flex;align-items:flex-start;justify-content:center;padding-top:120px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility .3s;}
+    .search-overlay.active{opacity:1;visibility:visible;pointer-events:all;}
+    .search-box{width:90%;max-width:640px;background:#fff;border-radius:20px;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 24px;box-shadow:0 30px 80px rgba(0,0,0,.4);}
+    .search-box input{flex:1;border:none;outline:none;font-size:1.1rem;font-family:'DM Sans',sans-serif;color:var(--txt);}
+    .search-box button{background:var(--g3);color:#fff;border:none;padding:12px 24px;border-radius:12px;font-size:.9rem;font-weight:600;cursor:pointer;}
+    .search-close{position:absolute;top:40px;right:40px;background:rgba(255,255,255,.1);border:none;border-radius:50%;width:44px;height:44px;cursor:pointer;color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+    .search-close:hover{background:rgba(255,255,255,.2);}
+
+    /* ── HERO ── */
+    .hero{position:relative;min-height:100vh;margin-top:106px;display:flex;flex-direction:column;overflow:hidden;background:var(--g0);}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 75% 50%,rgba(58,181,74,.18),transparent 60%),radial-gradient(ellipse 50% 60% at 20% 80%,rgba(212,175,55,.1),transparent 55%),linear-gradient(160deg,#040f07 0%,#0a2210 35%,#0f3319 65%,#061a0c 100%);}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(58,181,74,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(58,181,74,.04) 1px,transparent 1px);background-size:60px 60px;animation:grid-drift 22s linear infinite;}
+    @keyframes grid-drift{from{background-position:0 0,0 0}to{background-position:60px 60px,60px 60px}}
+    .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+    .hero-orb-1{width:700px;height:700px;background:rgba(58,181,74,.12);top:-200px;right:-100px;animation:orbf 8s ease-in-out infinite;}
+    .hero-orb-2{width:500px;height:500px;background:rgba(212,175,55,.08);bottom:-100px;left:-80px;animation:orbf 10s ease-in-out infinite reverse;}
+    .hero-orb-3{width:300px;height:300px;background:rgba(26,92,42,.2);top:40%;left:40%;animation:orbf 6s ease-in-out infinite;}
+    @keyframes orbf{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.05)}66%{transform:translate(-20px,30px) scale(.95)}}
+    .hero-particles{position:absolute;inset:0;pointer-events:none;}
+    .particle{position:absolute;opacity:0;animation:pfall linear infinite;}
+    @keyframes pfall{0%{opacity:0;transform:translateY(-20px) rotate(0deg)}10%{opacity:.4}90%{opacity:.15}100%{opacity:0;transform:translateY(100vh) rotate(360deg)}}
+
+    .hero-inner{position:relative;z-index:10;flex:1;display:flex;align-items:center;max-width:1300px;margin:0 auto;width:100%;padding:60px 60px 40px;gap:60px;}
+
+    .hero-left{flex:1;min-width:0;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(58,181,74,.12);border:1px solid rgba(58,181,74,.3);border-radius:30px;padding:7px 18px 7px 10px;margin-bottom:30px;animation:fsu .8s ease both;}
+    .eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--g4);box-shadow:0 0 0 3px rgba(58,181,74,.25);animation:pdot 2s infinite;}
+    .hero-eyebrow span{font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--g5);}
+    .hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,7vw,7rem);font-weight:900;color:#fff;line-height:.95;margin-bottom:28px;animation:fsu .8s .1s ease both;}
+    .hero-title .l-accent{display:block;color:transparent;-webkit-text-stroke:1.5px rgba(58,181,74,.6);font-style:italic;}
+    .hero-title .l-vivid{display:block;color:var(--g5);font-style:italic;}
+    .hero-title .l-white{display:block;}
+    .hero-desc{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.65);line-height:1.8;max-width:520px;margin-bottom:38px;animation:fsu .8s .2s ease both;}
+    .hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:38px;animation:fsu .8s .3s ease both;}
+    .hero-pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:7px 16px;font-size:.8rem;color:rgba(255,255,255,.8);backdrop-filter:blur(4px);}
+    .hero-pill .pi{color:var(--g5);font-weight:700;}
+    .hero-btns{display:flex;flex-wrap:wrap;gap:14px;animation:fsu .8s .4s ease both;}
+    .btn-hmain{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--g3),var(--g5));color:var(--g0)!important;text-decoration:none;padding:16px 36px;border-radius:40px;font-weight:700;font-size:.95rem;letter-spacing:.03em;box-shadow:0 8px 28px rgba(58,181,74,.35);transition:all .3s;position:relative;overflow:hidden;}
+    .btn-hmain::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--g5),#fff);opacity:0;transition:opacity .3s;}
+    .btn-hmain:hover::before{opacity:.15;}
+    .btn-hmain:hover{transform:translateY(-3px);box-shadow:0 16px 44px rgba(58,181,74,.5);}
+    .btn-hmain>*{position:relative;}
+    .btn-hout{display:inline-flex;align-items:center;gap:10px;border:1.5px solid rgba(255,255,255,.25);color:#fff;text-decoration:none;padding:16px 36px;border-radius:40px;font-weight:600;font-size:.95rem;backdrop-filter:blur(6px);transition:all .3s;background:rgba(255,255,255,.05);}
+    .btn-hout:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.1);transform:translateY(-2px);}
+    .hero-stats{display:flex;gap:32px;margin-top:50px;padding-top:34px;border-top:1px solid rgba(255,255,255,.08);animation:fsu .8s .5s ease both;}
+    .stat-val{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.05em;color:#fff;}
+    .stat-val em{color:var(--g5);font-style:normal;}
+    .stat-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.38);}
+
+    .hero-right{flex-shrink:0;width:440px;display:flex;flex-direction:column;gap:16px;animation:fsr .9s .2s ease both;}
+    @keyframes fsr{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+    .hero-card{position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:28px;overflow:hidden;backdrop-filter:blur(10px);padding:30px 26px;}
+    .hero-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(58,181,74,.08),transparent 60%);}
+    .hc-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--g0);padding:6px 16px;border-radius:30px;font-family:'Bebas Neue',sans-serif;font-size:.92rem;letter-spacing:.1em;margin-bottom:18px;box-shadow:0 4px 16px rgba(212,175,55,.4);}
+    .hc-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:#fff;line-height:1.15;margin-bottom:4px;}
+    .hc-sub{font-size:.82rem;color:rgba(255,255,255,.45);margin-bottom:20px;}
+    .hc-img{width:100%;height:175px;object-fit:cover;border-radius:14px;margin-bottom:20px;box-shadow:0 8px 30px rgba(0,0,0,.3);}
+    .hc-price-row{display:flex;align-items:flex-end;gap:14px;padding:14px;background:rgba(0,0,0,.25);border-radius:14px;}
+    .hc-price-val{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;color:var(--red);line-height:1;}
+    .hc-price-lbl{font-size:.76rem;color:rgba(255,255,255,.45);flex:1;line-height:1.4;}
+    .hc-price-cta{background:var(--g3);color:#fff;text-decoration:none;padding:10px 18px;border-radius:10px;font-size:.78rem;font-weight:700;transition:background .2s;white-space:nowrap;}
+    .hc-price-cta:hover{background:var(--g2);}
+    .hero-minicards{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .hmc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 14px;backdrop-filter:blur(8px);transition:background .25s,border-color .25s;}
+    .hmc:hover{background:rgba(58,181,74,.1);border-color:rgba(58,181,74,.3);}
+    .hmc-icon{font-size:1.5rem;margin-bottom:7px;}
+    .hmc-val{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.06em;color:#fff;}
+    .hmc-lbl{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.38);}
+
+    .hero-scroll{position:relative;z-index:10;display:flex;align-items:center;justify-content:center;padding:26px;gap:12px;}
+    .hero-scroll span{font-size:.7rem;color:rgba(255,255,255,.3);letter-spacing:.15em;text-transform:uppercase;}
+    .scroll-line{width:40px;height:1px;background:rgba(255,255,255,.18);}
+    .scroll-dot-wrap{width:26px;height:42px;border:1.5px solid rgba(255,255,255,.18);border-radius:13px;display:flex;align-items:flex-start;justify-content:center;padding-top:5px;}
+    .scroll-dot{width:5px;height:5px;border-radius:50%;background:var(--g5);animation:sbounce 2s ease-in-out infinite;}
+    @keyframes sbounce{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(14px);opacity:.4}}
+    @keyframes fsu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ── COUNTDOWN ── */
+    .countdown-wrap{background:var(--brown-dk);padding:50px 40px;text-align:center;}
+    .countdown-label{font-family:'Bebas Neue',sans-serif;font-size:.88rem;letter-spacing:.3em;color:var(--g-light);text-transform:uppercase;margin-bottom:26px;}
+    .countdown-grid{display:inline-flex;align-items:stretch;}
+    .ccd{padding:20px 30px;position:relative;}
+    .ccd:not(:last-child)::after{content:':';position:absolute;right:-4px;top:50%;transform:translateY(-60%);font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(255,255,255,.22);}
+    .ccd-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5vw,5rem);color:#fff;line-height:1;display:block;}
+    .ccd-lbl{font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:5px;display:block;}
+
+    /* ── SECTIONS ── */
+    .section-wrap{max-width:1200px;margin:0 auto;padding:80px 40px;}
+    .section-header{text-align:center;margin-bottom:60px;}
+    .section-tag{display:inline-block;background:var(--g-light);color:var(--g2);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:5px 18px;border-radius:30px;margin-bottom:16px;}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--brown);line-height:1.15;}
+    .section-title em{color:var(--g3);font-style:italic;}
+    .section-desc{font-size:1rem;color:var(--txt-lt);max-width:600px;margin:16px auto 0;line-height:1.8;}
+    .divider-leaf{display:flex;align-items:center;justify-content:center;gap:14px;margin:18px 0;}
+    .divider-leaf hr{width:80px;border:none;height:1px;background:var(--g-light);}
+
+    /* ── ACCÈS ── */
+    .acces-bg{background:linear-gradient(180deg,var(--cream) 0%,var(--g-pale) 100%);}
+    .acces-card{max-width:700px;margin:0 auto;background:#fff;border-radius:24px;padding:50px;box-shadow:0 20px 60px rgba(26,92,42,.1);border:2px solid var(--g-light);display:flex;align-items:center;gap:40px;position:relative;overflow:hidden;}
+    .acces-card::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:var(--g-pale);}
+    .acces-icon-wrap{flex-shrink:0;width:90px;height:90px;background:var(--g-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.8rem;}
+    .acces-content{position:relative;z-index:1;}
+    .acces-type{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.12em;color:var(--g2);margin-bottom:8px;}
+    .acces-price{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--red);margin-bottom:10px;}
+    .acces-includes{font-size:.9rem;color:var(--txt-lt);line-height:1.7;font-weight:500;}
+    .acces-note{text-align:center;margin-top:22px;font-size:.9rem;color:var(--red);font-weight:600;}
+
+    /* ── SPONSORING ── */
+    .sponsoring-bg{background:var(--brown-dk);position:relative;overflow:hidden;}
+    .sponsoring-bg::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1632818924360-68d4994cfdb2?w=1600&q=60') center/cover;opacity:.05;}
+    .sponsoring-bg .section-title{color:#fff;}
+    .sponsoring-bg .section-tag{background:rgba(255,255,255,.12);color:#fff;}
+    .sponsoring-bg .section-desc{color:rgba(255,255,255,.6);}
+    .sponsoring-bg .divider-leaf hr{background:rgba(255,255,255,.15);}
+    .packs-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:60px;}
+    .pack-card{border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(8px);padding:24px 14px 18px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;}
+    .pack-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+    .pack-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.4);}
+    .pack-premium::before{background:var(--gold);} .pack-premium:hover{border-color:var(--gold);}
+    .pack-diamond::before{background:var(--diamond);} .pack-diamond:hover{border-color:var(--diamond);}
+    .pack-gold::before{background:var(--g4);} .pack-gold:hover{border-color:var(--g4);}
+    .pack-silver::before{background:var(--silver);} .pack-silver:hover{border-color:var(--silver);}
+    .pack-bronze::before{background:var(--bronze);} .pack-bronze:hover{border-color:var(--bronze);}
+    .pack-badge{position:absolute;top:12px;right:10px;background:var(--gold);color:#fff;font-size:.58rem;font-weight:800;padding:3px 9px;border-radius:20px;letter-spacing:.06em;}
+    .pack-name{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.1em;}
+    .pack-premium .pack-name{color:var(--gold);} .pack-diamond .pack-name{color:var(--diamond);} .pack-gold .pack-name{color:#6dda82;} .pack-silver .pack-name{color:#ccc;} .pack-bronze .pack-name{color:var(--bronze);}
+    .pack-price{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;}
+    .pack-price small{font-size:.7rem;font-weight:400;color:rgba(255,255,255,.42);font-family:'DM Sans',sans-serif;display:block;}
+    .pack-features{list-style:none;flex:1;}
+    .pack-features li{font-size:.75rem;color:rgba(255,255,255,.68);padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06);line-height:1.4;display:flex;align-items:flex-start;gap:5px;}
+    .pack-features li::before{content:'✓';color:var(--g4);font-weight:700;flex-shrink:0;}
+    .pack-features li:last-child{border-bottom:none;}
+    .pack-cta{display:block;text-align:center;padding:10px;border-radius:28px;font-weight:700;font-size:.78rem;text-decoration:none;letter-spacing:.04em;transition:all .3s;border:2px solid;}
+    .pack-premium .pack-cta{color:var(--gold);border-color:var(--gold);} .pack-premium .pack-cta:hover{background:var(--gold);color:#fff;}
+    .pack-diamond .pack-cta{color:var(--diamond);border-color:var(--diamond);} .pack-diamond .pack-cta:hover{background:var(--diamond);color:#fff;}
+    .pack-gold .pack-cta{color:#6dda82;border-color:#6dda82;} .pack-gold .pack-cta:hover{background:#6dda82;color:var(--g2);}
+    .pack-silver .pack-cta{color:#ccc;border-color:#ccc;} .pack-silver .pack-cta:hover{background:#ccc;color:var(--txt);}
+    .pack-bronze .pack-cta{color:var(--bronze);border-color:var(--bronze);} .pack-bronze .pack-cta:hover{background:var(--bronze);color:#fff;}
+
+    .table-ttl{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;text-align:center;margin-bottom:26px;}
+    .table-scroll{overflow-x:auto;border-radius:14px;}
+    .comp-table{width:100%;border-collapse:collapse;min-width:750px;background:rgba(255,255,255,.03);}
+    .comp-table thead th{padding:14px 12px;font-size:.78rem;font-weight:700;text-align:center;letter-spacing:.06em;text-transform:uppercase;}
+    .comp-table thead th:first-child{text-align:left;min-width:260px;}
+    .comp-table thead th span{display:block;font-size:.67rem;font-weight:400;opacity:.65;margin-top:2px;}
+    .th-feat{background:var(--g2);color:#fff;} .th-prem{background:rgba(212,175,55,.2);color:var(--gold);} .th-diam{background:rgba(74,159,213,.2);color:var(--diamond);} .th-gold{background:rgba(58,181,74,.18);color:#6dda82;} .th-silv{background:rgba(158,158,158,.2);color:#ccc;} .th-bron{background:rgba(205,127,50,.2);color:var(--bronze);}
+    .comp-table tbody td{padding:10px 12px;text-align:center;font-size:.8rem;color:rgba(255,255,255,.62);border-bottom:1px solid rgba(255,255,255,.05);}
+    .comp-table tbody td:first-child{text-align:left;color:rgba(255,255,255,.8);font-weight:500;}
+    .comp-table tbody td:not(:first-child){color:var(--g4);font-weight:700;font-size:.93rem;}
+    .comp-table tbody tr:hover{background:rgba(255,255,255,.03);}
+    .comp-table tbody tr:nth-child(even){background:rgba(0,0,0,.1);}
+
+    .exposant-card{max-width:780px;margin:60px auto 0;background:rgba(255,255,255,.05);border:2px solid rgba(58,181,74,.3);border-radius:20px;padding:34px;display:flex;gap:26px;align-items:flex-start;backdrop-filter:blur(8px);transition:border-color .3s;}
+    .exposant-card:hover{border-color:var(--g4);}
+    .exp-icon{flex-shrink:0;width:66px;height:66px;border-radius:50%;background:rgba(58,181,74,.12);display:flex;align-items:center;justify-content:center;font-size:1.8rem;}
+    .exp-name{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.1em;color:#fff;margin-bottom:5px;}
+    .exp-price{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;color:var(--red);margin-bottom:10px;}
+    .exp-desc{font-size:.93rem;color:rgba(255,255,255,.68);line-height:1.7;margin-bottom:8px;}
+    .exp-note{font-size:.8rem;color:rgba(255,255,255,.42);line-height:1.6;}
+
+    .contact-cta-box{margin-top:60px;background:rgba(58,181,74,.08);border:2px solid rgba(58,181,74,.22);border-radius:24px;padding:50px;text-align:center;}
+    .contact-cta-box h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;}
+    .contact-name{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.1em;color:var(--g4);margin:10px 0;}
+    .contact-links{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin:14px 0 26px;}
+    .contact-links a{color:rgba(255,255,255,.68);text-decoration:none;font-size:.93rem;display:flex;align-items:center;gap:7px;transition:color .3s;}
+    .contact-links a:hover{color:#fff;}
+    .btn-contact{display:inline-block;background:var(--g4);color:#fff!important;padding:16px 40px;border-radius:40px;font-weight:700;font-size:1rem;text-decoration:none!important;transition:all .3s;letter-spacing:.03em;}
+    .btn-contact:hover{background:var(--g3);transform:translateY(-3px);box-shadow:0 14px 40px rgba(58,181,74,.4);}
+
+    /* ── FORM ── */
+    .form-bg{background:var(--cream);position:relative;}
+    .form-bg::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--g3),var(--gold),var(--g3));}
+    .form-container{max-width:900px;margin:0 auto;background:#fff;border-radius:28px;padding:60px;box-shadow:0 30px 80px rgba(26,92,42,.1);border:1px solid var(--g-light);}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px;}
+    .form-group{display:flex;flex-direction:column;}
+    .form-group label{font-size:.76rem;font-weight:700;color:var(--txt);letter-spacing:.05em;text-transform:uppercase;margin-bottom:7px;}
+    .field-wrap{position:relative;}
+    .field-wrap input,.field-wrap select{width:100%;padding:14px 46px 14px 16px;border:2px solid #e8e8e8;border-radius:12px;font-size:.93rem;font-family:'DM Sans',sans-serif;color:var(--txt);background:#fafafa;transition:all .3s;appearance:none;}
+    .field-wrap input:focus,.field-wrap select:focus{outline:none;border-color:var(--g3);background:#fff;box-shadow:0 0 0 4px rgba(43,147,72,.1);}
+    .field-wrap input.error,.field-wrap select.error{border-color:var(--red);}
+    .field-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--g3);font-size:1.05rem;opacity:.7;pointer-events:none;}
+    .form-submit-wrap{text-align:center;margin-top:38px;}
+    .btn-submit{background:linear-gradient(135deg,var(--g2),var(--g4));color:#fff;border:none;padding:16px 56px;border-radius:40px;font-size:1.05rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;position:relative;overflow:hidden;transition:all .3s;letter-spacing:.03em;}
+    .btn-submit:hover{transform:translateY(-3px);box-shadow:0 16px 44px rgba(26,92,42,.35);}
+    .btn-submit .btn-text,.btn-submit .loader{position:relative;z-index:1;}
+    .loader{display:none;width:18px;height:18px;border:3px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite;margin-left:10px;vertical-align:middle;}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .country-suggestions{position:absolute;top:100%;left:0;right:0;background:#fff;border:2px solid var(--g-light);border-radius:10px;max-height:180px;overflow-y:auto;z-index:200;display:none;box-shadow:0 10px 30px rgba(0,0,0,.1);margin-top:4px;}
+    .country-suggestions div{padding:10px 16px;cursor:pointer;font-size:.9rem;transition:background .2s;}
+    .country-suggestions div:hover{background:var(--g-pale);color:var(--g2);font-weight:600;}
+
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;justify-content:center;align-items:center;z-index:9999;backdrop-filter:blur(4px);}
+    .modal-box{background:#fff;padding:50px 40px;border-radius:24px;max-width:440px;text-align:center;animation:popIn .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 40px 100px rgba(0,0,0,.25);}
+    @keyframes popIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+    .modal-box .emoji{font-size:3.5rem;margin-bottom:14px;display:block;}
+    .modal-box h3{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--brown);margin-bottom:12px;}
+    .modal-box p{color:var(--txt-lt);line-height:1.7;margin-bottom:7px;}
+    .modal-close{margin-top:22px;background:var(--g3);color:#fff;border:none;padding:12px 36px;border-radius:30px;font-size:.93rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+    .modal-close:hover{background:var(--g2);}
+
+    /* ── TERMS ── */
+    .terms-bg{background:var(--g-pale);}
+    .terms-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+    .terms-block h3{font-size:.98rem;font-weight:700;color:var(--g2);margin-bottom:12px;display:flex;align-items:center;gap:9px;}
+    .terms-block h3::before{content:'';display:inline-block;width:4px;height:20px;background:var(--g4);border-radius:2px;}
+    .terms-block ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+    .terms-block ul li{font-size:.87rem;color:var(--txt-lt);line-height:1.7;padding-left:18px;position:relative;}
+    .terms-block ul li::before{content:'→';position:absolute;left:0;color:var(--g3);font-weight:700;}
+
+    .footer{background:var(--g0);color:rgba(255,255,255,.45);text-align:center;padding:26px 40px;font-size:.8rem;}
+    .footer a{color:rgba(255,255,255,.6);text-decoration:none;}
+
+    .fade-up{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+    .fade-up.visible{opacity:1;transform:translateY(0);}
+
+    @media(max-width:1100px){.hero-right{width:360px;} .packs-grid{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:900px){.hero-inner{flex-direction:column;padding:40px 32px 30px;gap:36px;} .hero-right{width:100%;max-width:500px;margin:0 auto;} .nav-center,.nav-search-btn{display:none;} .hamburger{display:flex;} .mobile-drawer{display:block;} .terms-grid{grid-template-columns:1fr;}}
+    @media(max-width:768px){.packs-grid{grid-template-columns:repeat(2,1fr);} .form-container{padding:30px 18px;} .form-row{grid-template-columns:1fr;} .acces-card{flex-direction:column;text-align:center;align-items:center;} .exposant-card{flex-direction:column;align-items:center;text-align:center;} .section-wrap{padding:60px 22px;} .topbar{display:none;} .navbar{top:0;} .hero{margin-top:70px;} .mobile-drawer{top:70px;}}
+    @media(max-width:480px){.packs-grid{grid-template-columns:1fr;} .hero-stats{flex-wrap:wrap;gap:18px;} .countdown-grid{flex-wrap:wrap;justify-content:center;}}
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <a href="tel:+212667781184"><i class="bi bi-telephone-fill"></i> +212 667 781 184</a>
+    <a href="mailto:contact@gmcmaroc.com"><i class="bi bi-envelope-fill"></i> contact@gmcmaroc.com</a>
+  </div>
+  <div class="topbar-right">
+    <div class="tb-social">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+      <a href="#"><i class="bi bi-linkedin"></i></a>
+      <a href="#"><i class="bi bi-youtube"></i></a>
+    </div>
+    <div class="tb-sep"></div>
+    <a href="#">🇫🇷 FR</a>
+    <a href="#">🇬🇧 EN</a>
+    <a href="#">🇲🇦 AR</a>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="avocado.html" class="nav-logo">
+    <div class="nav-logo-icon">🥑</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-main">Avocado Congress</span>
+      <span class="nav-logo-sub">GMC Maroc · 2026</span>
+    </div>
+  </a>
+
+  <ul class="nav-center">
+    <li class="nav-item">
+      <a href="#" class="nav-link">Présentation <i class="bi bi-chevron-down chev"></i></a>
+      <div class="nav-drop">
+        <a href="#"><span class="dd-ic">🌿</span><span>À propos du Congress<span class="dd-lbl">Objectifs & vision</span></span></a>
+        <a href="#"><span class="dd-ic">🏛️</span><span>GMC Maroc<span class="dd-lbl">Organisateur officiel</span></span></a>
+        <div class="dd-sep"></div>
+        <a href="#"><span class="dd-ic">📍</span><span>Lieu & Accès<span class="dd-lbl">Carte et transport</span></span></a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">Avocado <i class="bi bi-chevron-down chev"></i></a>
+      <div class="nav-drop nav-mega">
+        <div class="mega-ttl">Filière Avocado</div>
+        <div class="mega-grid">
+          <a href="#"><span class="dd-ic">🌱</span><span>Production<span class="dd-lbl">Maroc & international</span></span></a>
+          <a href="#"><span class="dd-ic">🚢</span><span>Export<span class="dd-lbl">Marchés cibles</span></span></a>
+          <a href="#"><span class="dd-ic">🔬</span><span>Innovation<span class="dd-lbl">R&D et variétés</span></span></a>
+          <a href="#"><span class="dd-ic">📊</span><span>Statistiques<span class="dd-lbl">Données du secteur</span></span></a>
+          <a href="#"><span class="dd-ic">💧</span><span>Durabilité<span class="dd-lbl">Eau & environnement</span></span></a>
+          <a href="#"><span class="dd-ic">🤝</span><span>Partenaires<span class="dd-lbl">Institutionnels</span></span></a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link">Programme <i class="bi bi-chevron-down chev"></i></a>
+      <div class="nav-drop">
+        <a href="#"><span class="dd-ic">📅</span><span>Agenda<span class="dd-lbl">Déroulé de la journée</span></span></a>
+        <a href="#"><span class="dd-ic">🎤</span><span>Intervenants<span class="dd-lbl">Experts & speakers</span></span></a>
+        <a href="#"><span class="dd-ic">🖥️</span><span>Conférences<span class="dd-lbl">Thèmes abordés</span></span></a>
+        <div class="dd-sep"></div>
+        <a href="#"><span class="dd-ic">📄</span><span>Fiche Technique<span class="dd-lbl">Télécharger le PDF</span></span></a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a href="#section-sponsoring" class="nav-link">Sponsors <i class="bi bi-chevron-down chev"></i></a>
+      <div class="nav-drop">
+        <a href="#section-sponsoring"><span class="dd-ic">🏆</span><span>Packs Sponsoring<span class="dd-lbl">Premium → Bronze</span></span></a>
+        <a href="#section-sponsoring"><span class="dd-ic">🏪</span><span>Pack Exposant<span class="dd-lbl">Stand 4m²</span></span></a>
+        <div class="dd-sep"></div>
+        <a href="mailto:sales@gmcmaroc.com"><span class="dd-ic">📬</span><span>Contacter les ventes<span class="dd-lbl">sales@gmcmaroc.com</span></span></a>
+      </div>
+    </li>
+    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="nav-search-btn" id="searchBtn"><i class="bi bi-search"></i></button>
+    <a href="#participer" class="nav-cta"><div class="cta-dot"></div>S'inscrire</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mob-link" onclick="toggleSub('s1')">Présentation <i class="bi bi-chevron-down"></i></div>
+  <div class="mob-sub" id="s1"><a href="#">À propos</a><a href="#">GMC Maroc</a><a href="#">Lieu & Accès</a></div>
+  <div class="mob-link" onclick="toggleSub('s2')">Avocado <i class="bi bi-chevron-down"></i></div>
+  <div class="mob-sub" id="s2"><a href="#">Production</a><a href="#">Export</a><a href="#">Innovation</a><a href="#">Statistiques</a></div>
+  <div class="mob-link" onclick="toggleSub('s3')">Programme <i class="bi bi-chevron-down"></i></div>
+  <div class="mob-sub" id="s3"><a href="#">Agenda</a><a href="#">Intervenants</a><a href="#">Conférences</a><a href="#">Fiche Technique</a></div>
+  <div class="mob-link" onclick="toggleSub('s4')">Sponsors <i class="bi bi-chevron-down"></i></div>
+  <div class="mob-sub" id="s4"><a href="#section-sponsoring">Packs Sponsoring</a><a href="#section-sponsoring">Pack Exposant</a></div>
+  <a href="#" class="mob-link">Contact</a>
+  <a href="#participer" class="mob-cta">🥑 S'inscrire au Congress</a>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+  <button class="search-close" id="searchClose"><i class="bi bi-x"></i></button>
+  <div class="search-box">
+    <i class="bi bi-search" style="color:#999;font-size:1.2rem"></i>
+    <input type="text" placeholder="Rechercher : sponsors, programme, inscription…" />
+    <button>Chercher</button>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-particles" id="particles"></div>
+
+  <div class="hero-inner">
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <span>GMC Maroc présente · Édition 2026</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="l-white">AVOCADO</span>
+        <span class="l-vivid">Congress</span>
+        <span class="l-accent">Maroc</span>
+      </h1>
+      <p class="hero-desc">L'événement de référence dédié à la filière avocado — conférences d'experts, exposition professionnelle, networking de haut niveau. Rejoignez les leaders du secteur.</p>
+      <div class="hero-pills">
+        <div class="hero-pill"><span class="pi">📅</span>13 Mai 2026</div>
+        <div class="hero-pill"><span class="pi">📍</span>Maroc</div>
+        <div class="hero-pill"><span class="pi">🎤</span>Conférences Pro</div>
+        <div class="hero-pill"><span class="pi">🏪</span>Exposition</div>
+        <div class="hero-pill"><span class="pi">🤝</span>Networking</div>
+      </div>
+      <div class="hero-btns">
+        <a href="#participer" class="btn-hmain"><span>🥑</span><span>S'inscrire maintenant</span></a>
+        <a href="#section-sponsoring" class="btn-hout">Devenir Sponsor <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="stat-val">1<em>.</em>200 <span style="font-size:1rem">MAD</span></div><div class="stat-lbl">Tarif professionnel</div></div>
+        <div class="hero-stat"><div class="stat-val">5<em>+</em></div><div class="stat-lbl">Packs sponsors</div></div>
+        <div class="hero-stat"><div class="stat-val">1<em> </em>Jour</div><div class="stat-lbl">Conférences & expo</div></div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hc-badge"><i class="bi bi-calendar-event"></i> 13 MAI 2026</div>
+        <div class="hc-title">AVOCADO Congress 2026</div>
+        <div class="hc-sub">Conférences · Exposition · Networking</div>
+        <img class="hc-img" src="https://images.unsplash.com/photo-1601039641847-7857b994d704?w=700&q=80" alt="Avocado Congress" />
+        <div class="hc-price-row">
+          <div>
+            <div class="hc-price-val">1.200 MAD</div>
+            <div class="hc-price-lbl">Accès conférences<br>+ déjeuner + documentation</div>
+          </div>
+          <a href="#participer" class="hc-price-cta">Réserver</a>
+        </div>
+      </div>
+      <div class="hero-minicards">
+        <div class="hmc"><div class="hmc-icon">🏆</div><div class="hmc-val">PREMIUM</div><div class="hmc-lbl">100.000 MAD</div></div>
+        <div class="hmc"><div class="hmc-icon">💎</div><div class="hmc-val">DIAMOND</div><div class="hmc-lbl">80.000 MAD</div></div>
+        <div class="hmc"><div class="hmc-icon">✨</div><div class="hmc-val">GOLD</div><div class="hmc-lbl">60.000 MAD</div></div>
+        <div class="hmc"><div class="hmc-icon">🥑</div><div class="hmc-val">EXPOSANT</div><div class="hmc-lbl">10.000 MAD</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <div class="scroll-dot-wrap"><div class="scroll-dot"></div></div>
+    <span>Défiler</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-wrap">
+  <div class="countdown-label">⏳ Compte à rebours · AVOCADO CONGRESS 2026</div>
+  <div class="countdown-grid">
+    <div class="ccd"><span class="ccd-num" id="days">00</span><span class="ccd-lbl">Jours</span></div>
+    <div class="ccd"><span class="ccd-num" id="hours">00</span><span class="ccd-lbl">Heures</span></div>
+    <div class="ccd"><span class="ccd-num" id="minutes">00</span><span class="ccd-lbl">Minutes</span></div>
+    <div class="ccd"><span class="ccd-num" id="seconds">00</span><span class="ccd-lbl">Secondes</span></div>
+  </div>
+</div>
+
+<!-- CONDITIONS D'ACCÈS -->
+<div class="acces-bg">
+  <div class="section-wrap">
+    <div class="section-header fade-up">
+      <div class="section-tag">Tarification</div>
+      <h2 class="section-title">Conditions <em>d'accès</em></h2>
+      <div class="divider-leaf"><hr><span>🥑</span><hr></div>
+    </div>
+    <div class="acces-card fade-up">
+      <div class="acces-icon-wrap">🥑</div>
+      <div class="acces-content">
+        <div class="acces-type">PROFESSIONNELS</div>
+        <div class="acces-price">1.200 <span style="font-size:1.2rem;font-weight:500;color:var(--txt-lt)">MAD HT</span></div>
+        <p class="acces-includes">ACCÈS CONFÉRENCES + DOCUMENTATION +<br>PAUSES CAFÉS + PAUSE DÉJEUNER</p>
+      </div>
+    </div>
+    <p class="acces-note fade-up">Des conditions conçues pour garantir un public réellement professionnel.</p>
+  </div>
+</div>
+
+<!-- SPONSORING -->
+<div class="sponsoring-bg" id="section-sponsoring">
+  <div class="section-wrap">
+    <div class="section-header fade-up">
+      <div class="section-tag">Partenariat</div>
+      <h2 class="section-title">Packs <em>Sponsoring</em></h2>
+      <div class="divider-leaf"><hr><span style="color:rgba(255,255,255,.3)">🥑</span><hr></div>
+      <p class="section-desc">Rejoignez l'AVOCADO CONGRESS 2026 en tant que sponsor et bénéficiez d'une visibilité maximale auprès des professionnels de la filière avocado.</p>
+    </div>
+    <div class="packs-grid">
+      <div class="pack-card pack-premium fade-up">
+        <div class="pack-badge">⭐ EXCLUSIF</div>
+        <div class="pack-name">PREMIUM</div>
+        <div class="pack-price">100.000 <small>MAD HT</small></div>
+        <ul class="pack-features">
+          <li>Appellation officielle « SPONSOR PREMIUM »</li><li>Logo sur les badges participants</li><li>Logo sur le sac officiel</li><li>Présentation vidéo ouverture (1 min)</li><li>Discours de 5 min à l'ouverture</li><li>Espace stand offert : <strong>18m²</strong></li><li><strong>10 billets</strong> gratuits</li><li>Défilement logo cérémonie d'ouverture</li><li>Mentionné par le maître de cérémonie</li><li>Brochure dans le sac de la conférence</li><li>Vidéo sur les médias sociaux</li><li>Logo + page complète brochure RAMD</li>
+        </ul>
+        <a href="mailto:sales@gmcmaroc.com?subject=Pack Sponsoring PREMIUM - AVOCADO CONGRESS 2026" class="pack-cta">Devenir PREMIUM</a>
+      </div>
+      <div class="pack-card pack-diamond fade-up">
+        <div class="pack-name">DIAMOND</div>
+        <div class="pack-price">80.000 <small>MAD HT</small></div>
+        <ul class="pack-features">
+          <li>Sponsor officiel du déjeuner</li><li>Présentation vidéo ouverture (1 min)</li><li>Discours de 3 min à l'ouverture</li><li>Espace stand offert : <strong>12m²</strong></li><li><strong>8 billets</strong> gratuits</li><li>Défilement logo cérémonie d'ouverture</li><li>Mentionné par le maître de cérémonie</li><li>Brochure dans le sac de la conférence</li><li>Vidéo sur les médias sociaux</li><li>Logo + page complète brochure RAMD</li><li>Logo sur e-mail prospects qualifiés</li>
+        </ul>
+        <a href="mailto:sales@gmcmaroc.com?subject=Pack Sponsoring DIAMOND - AVOCADO CONGRESS 2026" class="pack-cta">Devenir DIAMOND</a>
+      </div>
+      <div class="pack-card pack-gold fade-up">
+        <div class="pack-name">GOLD</div>
+        <div class="pack-price">60.000 <small>MAD HT</small></div>
+        <ul class="pack-features">
+          <li>Sponsor officiel Coffee break</li><li>Espace stand offert : <strong>9m²</strong></li><li><strong>6 billets</strong> gratuits</li><li>Défilement logo cérémonie d'ouverture</li><li>Mentionné par le maître de cérémonie</li><li>Brochure dans le sac de la conférence</li><li>Vidéo sur les médias sociaux</li><li>Logo + page complète brochure RAMD</li><li>Logo sur e-mail prospects qualifiés</li>
+        </ul>
+        <a href="mailto:sales@gmcmaroc.com?subject=Pack Sponsoring GOLD - AVOCADO CONGRESS 2026" class="pack-cta">Devenir GOLD</a>
+      </div>
+      <div class="pack-card pack-silver fade-up">
+        <div class="pack-name">SILVER</div>
+        <div class="pack-price">40.000 <small>MAD HT</small></div>
+        <ul class="pack-features">
+          <li>Espace stand offert : <strong>6m²</strong></li><li><strong>4 billets</strong> gratuits</li><li>Vidéo sur les médias sociaux</li><li>Logo + page complète brochure RAMD</li><li>Logo + mention médias sociaux</li><li>Logo sur e-mail prospects qualifiés</li><li>Logo mur d'exposition & signalisation</li>
+        </ul>
+        <a href="mailto:sales@gmcmaroc.com?subject=Pack Sponsoring SILVER - AVOCADO CONGRESS 2026" class="pack-cta">Devenir SILVER</a>
+      </div>
+      <div class="pack-card pack-bronze fade-up">
+        <div class="pack-name">BRONZE</div>
+        <div class="pack-price">20.000 <small>MAD HT</small></div>
+        <ul class="pack-features">
+          <li><strong>2 billets</strong> gratuits</li><li>Logo + mention médias sociaux</li><li>Logo sur e-mail prospects qualifiés</li><li>Logo mur d'exposition & signalisation</li><li>Logo, lien & description page web</li>
+        </ul>
+        <a href="mailto:sales@gmcmaroc.com?subject=Pack Sponsoring BRONZE - AVOCADO CONGRESS 2026" class="pack-cta">Devenir BRONZE</a>
+      </div>
+    </div>
+
+    <div class="table-ttl fade-up">Tableau comparatif des packs</div>
+    <div class="table-scroll fade-up">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th class="th-feat">Avantages inclus</th>
+            <th class="th-prem">PREMIUM<span>100.000 MAD</span></th>
+            <th class="th-diam">DIAMOND<span>80.000 MAD</span></th>
+            <th class="th-gold">GOLD<span>60.000 MAD</span></th>
+            <th class="th-silv">SILVER<span>40.000 MAD</span></th>
+            <th class="th-bron">BRONZE<span>20.000 MAD</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Partenariat exclusif « SPONSOR PREMIUM »</td><td>✔</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Logo sur les badges participants</td><td>✔</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Logo sur le sac officiel de l'événement</td><td>✔</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Sponsor officiel du déjeuner</td><td></td><td>✔</td><td></td><td></td><td></td></tr>
+          <tr><td>Présentation vidéo session d'ouverture (1 min)</td><td>✔</td><td>✔</td><td></td><td></td><td></td></tr>
+          <tr><td>Sponsor officiel Coffee break conférences</td><td></td><td></td><td>✔</td><td></td><td></td></tr>
+          <tr><td>Discours de 5 min lors de l'ouverture</td><td>✔</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Discours de 3 min lors de l'ouverture</td><td></td><td>✔</td><td></td><td></td><td></td></tr>
+          <tr><td>Espace stand offert</td><td>18m²</td><td>12m²</td><td>9m²</td><td>6m²</td><td>—</td></tr>
+          <tr><td>Défilement logo cérémonie d'ouverture</td><td>✔</td><td>✔</td><td>✔</td><td></td><td></td></tr>
+          <tr><td>Mentionné par le maître de cérémonie</td><td>✔</td><td>✔</td><td>✔</td><td></td><td></td></tr>
+          <tr><td>Brochure dans le sac de la conférence</td><td>✔</td><td>✔</td><td>✔</td><td></td><td></td></tr>
+          <tr><td>Vidéo sur les médias sociaux</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td></td></tr>
+          <tr><td>Logo et profil sur la brochure RAMD</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td></td></tr>
+          <tr><td>Une page complète sur la brochure RAMD</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td></td></tr>
+          <tr><td>Billets gratuits</td><td><strong>10</strong></td><td><strong>8</strong></td><td><strong>6</strong></td><td><strong>4</strong></td><td><strong>2</strong></td></tr>
+          <tr><td>Logo + mention médias sociaux avant/après</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td></tr>
+          <tr><td>Logo sur e-mail envoyé aux prospects</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td></tr>
+          <tr><td>Logo sur le mur d'exposition et signalisation</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td></tr>
+          <tr><td>Logo, lien et description sur la page web</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:right;font-size:.73rem;color:rgba(255,255,255,.28);margin-top:7px;">* Tous les prix sont indiqués hors taxes (HT)</p>
+
+    <div class="exposant-card fade-up">
+      <div class="exp-icon">🏪</div>
+      <div>
+        <div class="exp-name">PACK EXPOSANT STANDARD</div>
+        <div class="exp-price">10.000 MAD HT</div>
+        <p class="exp-desc">Surface d'exposition de <strong>4m²</strong> comprenant : 1 table · 2 chaises · 1 prise électrique · Accès Wi-Fi · 1 billet gratuit.</p>
+        <p class="exp-note">⚠️ Bannières et décorations fournies par l'exposant. Espace limité — <strong>premier arrivé, premier servi</strong>.</p>
+      </div>
+    </div>
+
+    <div class="contact-cta-box fade-up">
+      <h3>Pour toute demande de sponsoring ou d'exposition</h3>
+      <div class="contact-name">Mme Hiba EL HAMIANI</div>
+      <div class="contact-links">
+        <a href="mailto:sales@gmcmaroc.com"><i class="bi bi-envelope-fill"></i> sales@gmcmaroc.com</a>
+        <a href="tel:+212666589887"><i class="bi bi-telephone-fill"></i> +212 666-589887</a>
+      </div>
+      <a href="mailto:sales@gmcmaroc.com?subject=Demande Pack Sponsoring AVOCADO CONGRESS 2026" class="btn-contact">Contacter notre équipe commerciale</a>
+    </div>
+  </div>
+</div>
+
+<!-- FORMULAIRE -->
+<div class="form-bg" id="participer">
+  <div class="section-wrap">
+    <div class="section-header fade-up">
+      <div class="section-tag">Inscription</div>
+      <h2 class="section-title">Participer au <em>Congress</em></h2>
+      <div class="divider-leaf"><hr><span>🥑</span><hr></div>
+    </div>
+    <div class="form-container fade-up">
+      <form id="participationFormAvocado" action="send_participation_avocado.php" method="POST">
+        <div class="form-row">
+          <div class="form-group"><label>Civilité *</label><div class="field-wrap"><select name="civility" required><option value="">Choisir…</option><option>Mr</option><option>Mme</option><option>Mlle</option></select><span class="field-icon"><i class="bi bi-person"></i></span></div></div>
+          <div class="form-group"><label>Nom *</label><div class="field-wrap"><input type="text" name="nom" required placeholder="Votre nom"/><span class="field-icon"><i class="bi bi-person-badge"></i></span></div></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Prénom *</label><div class="field-wrap"><input type="text" name="prenom" required placeholder="Votre prénom"/><span class="field-icon"><i class="bi bi-person"></i></span></div></div>
+          <div class="form-group"><label>Email *</label><div class="field-wrap"><input type="email" name="email" required placeholder="email@exemple.com"/><span class="field-icon"><i class="bi bi-envelope"></i></span></div></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Ville *</label><div class="field-wrap"><input type="text" name="ville" required placeholder="Votre ville"/><span class="field-icon"><i class="bi bi-geo-alt"></i></span></div></div>
+          <div class="form-group"><label>Pays *</label><div class="field-wrap" style="position:relative"><input type="text" name="pays" id="countryInput" required autocomplete="off" placeholder="Taper votre pays…"/><span class="field-icon"><i class="bi bi-globe"></i></span><div class="country-suggestions" id="countryList"></div></div></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>N° Téléphone *</label><div class="field-wrap"><input type="text" name="telephone" required placeholder="+212 6XX XXX XXX"/><span class="field-icon"><i class="bi bi-telephone"></i></span></div></div>
+          <div class="form-group"><label>Fonction *</label><div class="field-wrap"><input type="text" name="fonction" required placeholder="Votre fonction"/><span class="field-icon"><i class="bi bi-briefcase"></i></span></div></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Nom de l'entreprise *</label><div class="field-wrap"><input type="text" name="company_name" required placeholder="Votre entreprise"/><span class="field-icon"><i class="bi bi-building"></i></span></div></div>
+          <div class="form-group"><label>Nombre de tickets *</label><div class="field-wrap"><input type="number" name="nombre_tickets" required placeholder="1" min="1"/><span class="field-icon"><i class="bi bi-ticket"></i></span></div></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Comment avez-vous entendu parler de nous ? *</label><div class="field-wrap"><select name="how_heard" required><option value="">Choisir…</option><option value="Google">Recherche Google</option><option value="LinkedIn">LinkedIn</option><option value="Facebook">Facebook</option><option value="Instagram">Instagram</option><option value="Email">Email / Newsletter</option><option value="Colleague">Recommandation d'un collègue</option><option value="Event">Word of mouth</option><option value="Other">Autre</option></select><span class="field-icon"><i class="bi bi-megaphone"></i></span></div></div>
+          <div class="form-group"><label>Souhaitez-vous être contacté à propos de RAMDpepper ? *</label><div class="field-wrap"><select name="contact_avocado" required><option value="">Choisir…</option><option value="Yes">Oui</option><option value="No">Non</option></select><span class="field-icon"><i class="bi bi-chat-dots"></i></span></div></div>
+        </div>
+        <div class="form-submit-wrap"><button type="submit" class="btn-submit"><span class="btn-text">Envoyer ma participation</span><span class="loader"></span></button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box">
+    <span class="emoji">🎉</span>
+    <h3>Merci !</h3>
+    <p>Votre inscription a été envoyée avec succès.</p>
+    <p>Nous vous contacterons dans les plus brefs délais. Merci pour votre confiance 🤝</p>
+    <button class="modal-close">Fermer</button>
+  </div>
+</div>
+
+<!-- CONDITIONS GÉNÉRALES -->
+<div class="terms-bg">
+  <div class="section-wrap">
+    <div class="section-header fade-up">
+      <div class="section-tag">Règlement</div>
+      <h2 class="section-title">Conditions Générales <em>d'Inscription</em></h2>
+    </div>
+    <div class="terms-grid">
+      <div class="terms-block fade-up"><h3>1. Inscription & Paiement</h3><ul><li>Frais payables après inscription et avant le début de la Conférence.</li><li>L'inscription n'est confirmée qu'après réception du paiement.</li><li>Les frais bancaires sont à la charge du participant.</li><li>Comprend : conférences + documentation + pauses cafés + déjeuner.</li></ul></div>
+      <div class="terms-block fade-up"><h3>2. Annulations & Remboursements</h3><ul><li>Toute annulation doit être notifiée par écrit.</li><li>30 jours ou plus avant : remboursement moins 20% de frais.</li><li>Moins de 30 jours avant : aucun remboursement.</li><li>Remplacement autorisé (avis écrit 7 jours avant).</li></ul></div>
+      <div class="terms-block fade-up"><h3>3. Cas de Force Majeure</h3><ul><li>En cas de report, les inscriptions sont transférées à la nouvelle date.</li><li>Les participants peuvent demander un remboursement si impossibilité d'assister.</li><li>Les organisateurs ne couvrent pas les frais annexes.</li></ul></div>
+      <div class="terms-block fade-up"><h3>4. Programme & Contenu</h3><ul><li>Les organisateurs peuvent modifier le programme sans préavis.</li><li>Ces changements ne donnent droit à aucun remboursement.</li><li>Les présentations sont partagées uniquement avec l'accord des intervenants.</li></ul></div>
+      <div class="terms-block fade-up"><h3>5. Restrictions d'Admission</h3><ul><li>Les inscriptions sont soumises à disponibilité et à acceptation.</li><li>Les organisateurs se réservent le droit de refuser l'admission.</li></ul></div>
+      <div class="terms-block fade-up"><h3>6. Responsabilité</h3><ul><li>Les organisateurs ne sont pas responsables des dommages ou pertes subis.</li><li>Les participants assurent eux-mêmes leur couverture voyage et santé.</li></ul></div>
+      <div class="terms-block fade-up"><h3>7. Photographie & Enregistrement</h3><ul><li>En participant, les inscrits acceptent d'être photographiés ou filmés.</li><li>Les contenus peuvent être utilisés à des fins promotionnelles.</li></ul></div>
+      <div class="terms-block fade-up"><h3>8. Protection des Données & Droit Applicable</h3><ul><li>Les données personnelles sont collectées et conservées de façon sécurisée.</li><li>Elles ne seront ni partagées ni vendues à des tiers.</li><li>Conditions régies par le droit marocain. Tribunaux marocains compétents.</li></ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p style="margin-bottom:7px"><strong style="color:rgba(255,255,255,.8)">AVOCADO CONGRESS 2026</strong> · organisé par GMC Maroc</p>
+  <p><a href="tel:+212667781184">+212 667 781 184</a> &nbsp;|&nbsp; <a href="mailto:contact@gmcmaroc.com">contact@gmcmaroc.com</a></p>
+  <p style="margin-top:10px;font-size:.73rem;opacity:.35">© 2026 GMC Maroc — Tous droits réservés</p>
+</footer>
+
+<script>
+  /* Navbar scroll */
+  const nb=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',window.scrollY>40));
+
+  /* Hamburger */
+  const ham=document.getElementById('hamburger'),drawer=document.getElementById('mobileDrawer');
+  ham.addEventListener('click',()=>{ham.classList.toggle('open');drawer.classList.toggle('open');document.body.style.overflow=drawer.classList.contains('open')?'hidden':'';});
+  function toggleSub(id){const el=document.getElementById(id);el.style.display=el.style.display==='block'?'none':'block';}
+
+  /* Search */
+  const so=document.getElementById('searchOverlay');
+  document.getElementById('searchBtn').addEventListener('click',()=>so.classList.add('active'));
+  document.getElementById('searchClose').addEventListener('click',()=>so.classList.remove('active'));
+  so.addEventListener('click',e=>{if(e.target===so)so.classList.remove('active');});
+
+  /* Countdown */
+  const ed=new Date("May 13, 2026 09:00:00").getTime();
+  const t=setInterval(()=>{const d=ed-Date.now();document.getElementById('days').textContent=String(Math.floor(d/86400000)).padStart(2,'0');document.getElementById('hours').textContent=String(Math.floor(d%86400000/3600000)).padStart(2,'0');document.getElementById('minutes').textContent=String(Math.floor(d%3600000/60000)).padStart(2,'0');document.getElementById('seconds').textContent=String(Math.floor(d%60000/1000)).padStart(2,'0');if(d<0)clearInterval(t);},1000);
+
+  /* Particles */
+  const emojis=['🥑','🌿','🍃','✨','🌱'];
+  const pc=document.getElementById('particles');
+  for(let i=0;i<20;i++){const el=document.createElement('div');el.className='particle';el.textContent=emojis[i%emojis.length];el.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;font-size:${.8+Math.random()*1.4}rem;animation-duration:${8+Math.random()*14}s;animation-delay:${Math.random()*12}s;`;pc.appendChild(el);}
+
+  /* Scroll anim */
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+  /* Country */
+  let countries=[];
+  fetch("https://restcountries.com/v3.1/all?fields=name").then(r=>r.json()).then(d=>{countries=d.map(c=>c.name.common).filter(Boolean).sort();}).catch(()=>{});
+  const ci=document.getElementById('countryInput'),cl=document.getElementById('countryList');
+  ci.addEventListener('input',()=>{const v=ci.value.toLowerCase();cl.innerHTML='';if(!v){cl.style.display='none';return;}const f=countries.filter(c=>c.toLowerCase().startsWith(v)).slice(0,8);if(!f.length){cl.style.display='none';return;}cl.style.display='block';f.forEach(c=>{const d=document.createElement('div');d.textContent=c;d.onclick=()=>{ci.value=c;cl.style.display='none';};cl.appendChild(d);});});
+  document.addEventListener('click',e=>{if(!ci.contains(e.target))cl.style.display='none';});
+
+  /* Form */
+  document.getElementById('participationFormAvocado').addEventListener('submit',function(e){e.preventDefault();let ok=true;this.querySelectorAll('[required]').forEach(i=>{if(!i.value.trim()){i.classList.add('error');ok=false;}else i.classList.remove('error');});if(!ok)return;document.querySelector('.btn-text').style.display='none';document.querySelector('.loader').style.display='inline-block';const fd=new FormData(this),form=this;fetch('send_participation_avocado.php',{method:'POST',body:fd}).then(r=>r.text()).then(data=>{document.querySelector('.loader').style.display='none';document.querySelector('.btn-text').style.display='inline';if(data.includes('SUCCESS')){document.getElementById('successModal').style.display='flex';form.reset();}}).catch(()=>{document.querySelector('.loader').style.display='none';document.querySelector('.btn-text').style.display='inline';});});
+  document.querySelector('.modal-close').addEventListener('click',()=>{document.getElementById('successModal').style.display='none';});
+</script>
+</body>
+</html>
