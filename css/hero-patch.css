@@ -1,0 +1,59 @@
+  <link href="css/avocado.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <style>
+  /* ── FIX 1 : image contain + centré sans zoom ── */
+  .hero-bg-img{object-fit:contain!important;background:#000;}
+
+  /* ── FIX 2 : navbar plus courte ── */
+  .navbar{padding-left:1.5rem!important;padding-right:1.5rem!important;}
+  .navbar .nav-link{font-size:.76rem!important;padding:0.45rem 0.6rem!important;}
+  .navbar .navbar-brand img{height:38px!important;}
+  .navbar .lang-btn{padding:2px 7px;font-size:.64rem;}
+
+  /* ── FIX 3 : boutons remontés dans le hero ── */
+  .hero-action-bar{display:none!important;}
+
+  .hero-overlay-bar{
+    position:absolute;bottom:0;left:0;right:0;z-index:10;
+    padding:20px 5% 24px;
+    background:linear-gradient(to top,rgba(0,0,0,.88) 0%,transparent 100%);
+    display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;
+  }
+  .hero-overlay-bar .btn-inscr{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#fff;color:#000!important;
+    padding:13px 30px;font-family:'Nunito',sans-serif;font-weight:700;
+    font-size:.82rem;text-decoration:none!important;
+    letter-spacing:.06em;text-transform:uppercase;
+    transition:background .2s;white-space:nowrap;
+  }
+  .hero-overlay-bar .btn-inscr:hover{background:#e8e8e8;}
+  .hero-overlay-bar .btn-sponsors{
+    display:inline-flex;align-items:center;gap:8px;
+    background:transparent;color:rgba(255,255,255,.85)!important;
+    padding:12px 26px;font-family:'Nunito',sans-serif;font-weight:600;
+    font-size:.82rem;text-decoration:none!important;
+    border:1px solid rgba(255,255,255,.35);
+    letter-spacing:.06em;text-transform:uppercase;
+    transition:all .2s;white-space:nowrap;
+  }
+  .hero-overlay-bar .btn-sponsors:hover{border-color:#fff;color:#fff!important;}
+  .hero-overlay-bar .ob-spacer{flex:1;}
+  .hero-overlay-bar .ob-logos{
+    display:flex;align-items:center;gap:10px;
+  }
+  .hero-overlay-bar .ob-org-label{
+    font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;
+    color:rgba(255,255,255,.35);font-family:'Nunito',sans-serif;
+  }
+  .hero-overlay-bar .ob-logo{
+    height:30px;object-fit:contain;
+    filter:brightness(0) invert(1);opacity:.65;
+    transition:opacity .2s;
+  }
+  .hero-overlay-bar .ob-logo:hover{opacity:1;}
+  @media(max-width:768px){
+    .hero-overlay-bar{flex-direction:column;align-items:flex-start;}
+    .hero-overlay-bar .ob-spacer{display:none;}
+  }
+  </style>
