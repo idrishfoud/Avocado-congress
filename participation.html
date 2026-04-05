@@ -260,27 +260,31 @@ html,body{overflow-x:hidden;background:#f0f7f2;}
   box-shadow:0 24px 80px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.1);
 }
 
-/* floating label inputs */
-.field-group{position:relative;margin-bottom:0;}
+/* ── Static label above field (more reliable & clean) ── */
+.field-group{position:relative;margin-bottom:0;display:flex;flex-direction:column;gap:6px;}
 .field-label{
-  position:absolute;
-  top:50%;transform:translateY(-50%);
-  left:48px;
-  font-size:.88rem;color:rgba(255,255,255,.4);
-  font-weight:500;pointer-events:none;
-  transition:all .25s cubic-bezier(.4,0,.2,1);
-  white-space:nowrap;
+  font-size:.72rem;font-weight:700;color:rgba(255,255,255,.55);
+  text-transform:uppercase;letter-spacing:.09em;
+  padding-left:4px;
+  pointer-events:none;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  max-width:100%;
+  transition:color .2s;
 }
-.field-group.textarea-group .field-label{top:22px;transform:none;}
-.field-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#7bcf5a;font-size:1.05rem;pointer-events:none;transition:color .2s;z-index:1;}
-.field-group.textarea-group .field-icon{top:20px;transform:none;}
+.field-group:focus-within .field-label{color:#7bcf5a;}
+.field-icon{
+  position:absolute;left:14px;bottom:14px;
+  color:#7bcf5a;font-size:1rem;pointer-events:none;
+  transition:color .2s,transform .2s;z-index:1;
+}
+.field-group:focus-within .field-icon{transform:scale(1.15);}
 
 .form-field{
   width:100%;
   background:rgba(255,255,255,.07);
   border:1.5px solid rgba(255,255,255,.12);
   border-radius:14px;
-  padding:20px 16px 8px 48px;
+  padding:13px 16px 13px 44px;
   font-size:.92rem;
   color:#fff;
   font-family:'Rubik',sans-serif;
@@ -288,24 +292,21 @@ html,body{overflow-x:hidden;background:#f0f7f2;}
   outline:none;
   appearance:none;
   -webkit-appearance:none;
+  height:50px;
 }
-.form-field::placeholder{color:transparent;}
-.form-field option{color:#333;background:#fff;}
+.form-field::placeholder{color:rgba(255,255,255,.25);}
+.form-field option{color:#222;background:#fff;}
 .form-field:focus{
   border-color:#7bcf5a;
   background:rgba(123,207,90,.08);
   box-shadow:0 0 0 4px rgba(123,207,90,.12), 0 4px 20px rgba(0,0,0,.2);
 }
-.form-field:focus ~ .field-label,
-.form-field:not(:placeholder-shown) ~ .field-label,
-.form-field.has-value ~ .field-label{
-  top:10px;transform:translateY(0);
-  font-size:.68rem;color:#7bcf5a;letter-spacing:.05em;font-weight:700;text-transform:uppercase;
-}
 .form-field.has-error{border-color:#ff6b6b!important;box-shadow:0 0 0 4px rgba(255,107,107,.12)!important;}
+/* select arrow */
+.field-group select.form-field{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237bcf5a' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:calc(100% - 14px) center;padding-right:36px;}
 
-.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
-.form-grid-1{margin-bottom:16px;}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px 16px;margin-bottom:20px;align-items:end;}
+.form-grid-1{margin-bottom:20px;}
 
 /* divider */
 .form-divider{display:flex;align-items:center;gap:16px;margin:28px 0 24px;}
@@ -598,7 +599,7 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
       <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
         <div class="d-inline-flex align-items-center" style="height:50px">
           <small class="me-5 text-light"><i class="bi bi-telephone me-2"></i>+212 667 781 184</small>
-          <small class="text-light"><i class="fa fa-envelope-open me-2"></i>contact@gmcmaroc.com</small>
+          <small class="text-light"><i class="fa fa-envelope-open me-2"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1a2aeafb5a0a2b581a6aca2aca0b3aea2efa2aeac">[email&#160;protected]</a></small>
         </div>
       </div>
     </div>
@@ -630,7 +631,7 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
       </div>
     </nav>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
       window.addEventListener("scroll",function(){
         const nb=document.querySelector(".navbar");
         if(window.scrollY>50)nb.classList.add("navbar-scrolled");
@@ -753,7 +754,7 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
           <div class="pack-stand"><i class="bi bi-layout-wtf me-1"></i><span data-i18n="stand_label">Stand offert</span> : 18m²</div>
           <div class="pack-tickets"><i class="bi bi-ticket-perforated-fill"></i><span data-i18n="tickets_label">10 billets gratuits inclus</span></div>
           <ul class="pack-features" data-pack="premium"></ul>
-          <a href="mailto:sales@gmcmaroc.com?subject=Pack PREMIUM - AVOCADO CONGRESS 2026" class="pack-cta magnetic" data-i18n="pack_cta_premium">Devenir PREMIUM</a>
+          <a href="/cdn-cgi/l/email-protection#9eedfff2fbeddef9f3fdf3ffecf1fdb0fdf1f3a1edebfcf4fbfdeaa3cefffdf5bececcdbd3d7cbd3beb3bedfc8d1dddfdad1beddd1d0d9ccdbcdcdbeacaeaca8" class="pack-cta magnetic" data-i18n="pack_cta_premium">Devenir PREMIUM</a>
         </div>
         <div class="pack-card pack-diamond reveal delay-2">
           <div class="pack-band"></div>
@@ -763,7 +764,7 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
           <div class="pack-stand"><i class="bi bi-layout-wtf me-1"></i><span data-i18n="stand_label">Stand offert</span> : 12m²</div>
           <div class="pack-tickets"><i class="bi bi-ticket-perforated-fill"></i><span data-i18n="tickets_label_8">8 billets gratuits inclus</span></div>
           <ul class="pack-features" data-pack="diamond"></ul>
-          <a href="mailto:sales@gmcmaroc.com?subject=Pack DIAMOND - AVOCADO CONGRESS 2026" class="pack-cta magnetic" data-i18n="pack_cta_diamond">Devenir DIAMOND</a>
+          <a href="/cdn-cgi/l/email-protection#e291838e8791a2858f818f83908d81cc818d8fdd91978088878196dfb2838189c2a6aba3afadaca6c2cfc2a3b4ada1a3a6adc2a1adaca5b0a7b1b1c2d0d2d0d4" class="pack-cta magnetic" data-i18n="pack_cta_diamond">Devenir DIAMOND</a>
         </div>
       </div>
 
@@ -776,7 +777,7 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
           <div class="pack-stand"><i class="bi bi-layout-wtf me-1"></i><span data-i18n="stand_label">Stand offert</span> : 9m²</div>
           <div class="pack-tickets"><i class="bi bi-ticket-perforated-fill"></i><span data-i18n="tickets_label_6">6 billets gratuits inclus</span></div>
           <ul class="pack-features" data-pack="gold"></ul>
-          <a href="mailto:sales@gmcmaroc.com?subject=Pack GOLD - AVOCADO CONGRESS 2026" class="pack-cta magnetic" data-i18n="pack_cta_gold">Devenir GOLD</a>
+          <a href="/cdn-cgi/l/email-protection#eb988a878e98ab8c8688868a998488c5888486d4989e89818e889fd6bb8a8880cbaca4a7afcbc6cbaabda4a8aaafa4cba8a4a5acb9aeb8b8cbd9dbd9dd" class="pack-cta magnetic" data-i18n="pack_cta_gold">Devenir GOLD</a>
         </div>
         <div class="pack-card pack-silver reveal delay-2">
           <div class="pack-band"></div>
@@ -786,7 +787,7 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
           <div class="pack-stand"><i class="bi bi-layout-wtf me-1"></i><span data-i18n="stand_label">Stand offert</span> : 6m²</div>
           <div class="pack-tickets"><i class="bi bi-ticket-perforated-fill"></i><span data-i18n="tickets_label_4">4 billets gratuits inclus</span></div>
           <ul class="pack-features" data-pack="silver"></ul>
-          <a href="mailto:sales@gmcmaroc.com?subject=Pack SILVER - AVOCADO CONGRESS 2026" class="pack-cta magnetic" data-i18n="pack_cta_silver">Devenir SILVER</a>
+          <a href="/cdn-cgi/l/email-protection#becddfd2dbcdfed9d3ddd3dfccd1dd90ddd1d381cdcbdcd4dbddca83eedfddd59eedf7f2e8fbec9e939effe8f1fdfffaf19efdf1f0f9ecfbeded9e8c8e8c88" class="pack-cta magnetic" data-i18n="pack_cta_silver">Devenir SILVER</a>
         </div>
         <div class="pack-card pack-bronze reveal delay-3">
           <div class="pack-band"></div>
@@ -795,7 +796,7 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
           <div class="pack-divider"></div>
           <div class="pack-tickets"><i class="bi bi-ticket-perforated-fill"></i><span data-i18n="tickets_label_2">2 billets gratuits inclus</span></div>
           <ul class="pack-features" data-pack="bronze"></ul>
-          <a href="mailto:sales@gmcmaroc.com?subject=Pack BRONZE - AVOCADO CONGRESS 2026" class="pack-cta magnetic" data-i18n="pack_cta_bronze">Devenir BRONZE</a>
+          <a href="/cdn-cgi/l/email-protection#85f6e4e9e0f6c5e2e8e6e8e4f7eae6abe6eae8baf6f0e7efe0e6f1b8d5e4e6eea5c7d7cacbdfc0a5a8a5c4d3cac6c4c1caa5c6cacbc2d7c0d6d6a5b7b5b7b3" class="pack-cta magnetic" data-i18n="pack_cta_bronze">Devenir BRONZE</a>
         </div>
       </div>
 
@@ -829,10 +830,10 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
         <p data-i18n="contact_sub">Contactez notre équipe commerciale pour un devis personnalisé</p>
         <p class="contact-name">Mme Hiba EL HAMIANI</p>
         <div class="contact-links">
-          <a href="mailto:sales@gmcmaroc.com"><i class="bi bi-envelope-fill"></i> sales@gmcmaroc.com</a>
+          <a href="/cdn-cgi/l/email-protection#a9dac8c5ccdae9cec4cac4c8dbc6ca87cac6c4"><i class="bi bi-envelope-fill"></i> <span class="__cf_email__" data-cfemail="6013010c051320070d030d01120f034e030f0d">[email&#160;protected]</span></a>
           <a href="tel:+212666589887"><i class="bi bi-telephone-fill"></i> +212 666-589887</a>
         </div>
-        <a href="mailto:sales@gmcmaroc.com?subject=Demande Pack Sponsoring AVOCADO CONGRESS 2026" class="cta-main-btn magnetic" data-i18n="contact_cta">
+        <a href="/cdn-cgi/l/email-protection#4734262b223407202a242a263528246924282a783432252d2224337a03222a26292322671726242c67143728293428352e292067061108040603086704080900150214146775777571" class="cta-main-btn magnetic" data-i18n="contact_cta">
           <i class="bi bi-send-fill"></i><span>Contacter notre équipe commerciale</span>
         </a>
       </div>
@@ -851,70 +852,70 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
 
             <div class="form-grid-2">
               <div class="field-group">
+                <label class="field-label" for="f-civility" data-i18n="form_civility">Civilité *</label>
                 <i class="bi bi-person field-icon"></i>
                 <select name="civility" class="form-field" id="f-civility" required>
                   <option value=""></option>
                   <option>Mr</option><option>Mme</option><option>Mlle</option>
                 </select>
-                <label class="field-label" for="f-civility" data-i18n="form_civility">Civilité *</label>
               </div>
               <div class="field-group">
-                <i class="bi bi-person-badge field-icon"></i>
-                <input type="text" name="nom" class="form-field" id="f-nom" placeholder=" " required/>
                 <label class="field-label" for="f-nom" data-i18n="form_nom">Nom *</label>
+                <i class="bi bi-person-badge field-icon"></i>
+                <input type="text" name="nom" class="form-field" id="f-nom" placeholder="Votre nom" required/>
               </div>
             </div>
 
             <div class="form-grid-2">
               <div class="field-group">
-                <i class="bi bi-person field-icon"></i>
-                <input type="text" name="prenom" class="form-field" id="f-prenom" placeholder=" " required/>
                 <label class="field-label" for="f-prenom" data-i18n="form_prenom">Prénom *</label>
+                <i class="bi bi-person field-icon"></i>
+                <input type="text" name="prenom" class="form-field" id="f-prenom" placeholder="Votre prénom" required/>
               </div>
               <div class="field-group">
-                <i class="bi bi-envelope field-icon"></i>
-                <input type="email" name="email" class="form-field" id="f-email" placeholder=" " required/>
                 <label class="field-label" for="f-email" data-i18n="form_email">Email *</label>
+                <i class="bi bi-envelope field-icon"></i>
+                <input type="email" name="email" class="form-field" id="f-email" placeholder="votre@email.com" required/>
               </div>
             </div>
 
             <div class="form-grid-2">
               <div class="field-group">
-                <i class="bi bi-geo-alt field-icon"></i>
-                <input type="text" name="ville" class="form-field" id="f-ville" placeholder=" " required/>
                 <label class="field-label" for="f-ville" data-i18n="form_ville">Ville *</label>
+                <i class="bi bi-geo-alt field-icon"></i>
+                <input type="text" name="ville" class="form-field" id="f-ville" placeholder="Votre ville" required/>
               </div>
               <div class="field-group" style="position:relative;">
-                <i class="bi bi-globe field-icon"></i>
-                <input type="text" name="pays" id="countryInput" class="form-field" placeholder=" " required autocomplete="off"/>
                 <label class="field-label" for="countryInput" data-i18n="form_pays">Pays *</label>
+                <i class="bi bi-globe field-icon"></i>
+                <input type="text" name="pays" id="countryInput" class="form-field" placeholder="Taper pour chercher..." required autocomplete="off"/>
                 <div id="countryList" class="country-list"></div>
               </div>
             </div>
 
             <div class="form-grid-2">
               <div class="field-group">
-                <i class="bi bi-telephone field-icon"></i>
-                <input type="text" name="telephone" class="form-field" id="f-tel" placeholder=" " required/>
                 <label class="field-label" for="f-tel" data-i18n="form_tel">N° Téléphone *</label>
+                <i class="bi bi-telephone field-icon"></i>
+                <input type="text" name="telephone" class="form-field" id="f-tel" placeholder="+212 6xx xxx xxx" required/>
               </div>
               <div class="field-group">
-                <i class="bi bi-briefcase field-icon"></i>
-                <input type="text" name="fonction" class="form-field" id="f-fonction" placeholder=" " required/>
                 <label class="field-label" for="f-fonction" data-i18n="form_fonction">Fonction *</label>
+                <i class="bi bi-briefcase field-icon"></i>
+                <input type="text" name="fonction" class="form-field" id="f-fonction" placeholder="Votre poste" required/>
               </div>
             </div>
 
             <div class="form-grid-2">
               <div class="field-group">
+                <label class="field-label" for="f-company" data-i18n="form_company">Entreprise *</label>
                 <i class="bi bi-building field-icon"></i>
-                <input type="text" name="company_name" class="form-field" id="f-company" placeholder=" " required/>
-                <label class="field-label" for="f-company" data-i18n="form_company">Nom de l'entreprise *</label>
+                <input type="text" name="company_name" class="form-field" id="f-company" placeholder="Nom de l'entreprise" required/>
               </div>
               <div class="field-group">
+                <label class="field-label" for="f-tickets" data-i18n="form_tickets">Nb de tickets *</label>
                 <i class="bi bi-ticket-perforated field-icon"></i>
-                <input type="number" min="1" name="nombre_tickets" class="form-field" id="f-tickets" placeholder=" " required/>
-                <label class="field-label" for="f-tickets" data-i18n="form_tickets">Nombre de tickets *</label>
+                <input type="number" min="1" name="nombre_tickets" class="form-field" id="f-tickets" placeholder="1" required/>
               </div>
             </div>
 
@@ -922,24 +923,24 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
 
             <div class="form-grid-2">
               <div class="field-group">
+                <label class="field-label" for="f-heard">Comment nous avez-vous connu ? *</label>
                 <i class="bi bi-megaphone field-icon"></i>
                 <select name="how_heard" class="form-field" id="f-heard" required>
-                  <option value=""></option>
+                  <option value="">Choisir…</option>
                   <option>Recherche Google</option><option>LinkedIn</option><option>Facebook</option>
                   <option>Instagram</option><option>Email / Newsletter</option>
                   <option data-i18n="form_colleague">Recommandation d'un collègue</option>
                   <option>Word of mouth</option><option data-i18n="form_other">Autre</option>
                 </select>
-                <label class="field-label" for="f-heard" data-i18n="form_heard">Comment nous avez-vous connu ? *</label>
               </div>
               <div class="field-group">
+                <label class="field-label" for="f-contact">Contact RAMDpepper ? *</label>
                 <i class="bi bi-chat-dots field-icon"></i>
                 <select name="contact_avocado" class="form-field" id="f-contact" required>
-                  <option value=""></option>
+                  <option value="">Choisir…</option>
                   <option data-i18n="form_yes">Oui</option>
                   <option data-i18n="form_no">Non</option>
                 </select>
-                <label class="field-label" for="f-contact" data-i18n="form_contact_ramd">Contact RAMDpepper ? *</label>
               </div>
             </div>
 
@@ -1146,11 +1147,11 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
             </div>
             <div class="footer-contact-item">
               <i class="bi bi-envelope-fill"></i>
-              <span><a href="mailto:contact@gmcmaroc.com">contact@gmcmaroc.com</a></span>
+              <span><a href="/cdn-cgi/l/email-protection#b9dad6d7cdd8dacdf9ded4dad4d8cbd6da97dad6d4"><span class="__cf_email__" data-cfemail="c9aaa6a7bda8aabd89aea4aaa4a8bba6aae7aaa6a4">[email&#160;protected]</span></a></span>
             </div>
             <div class="footer-contact-item">
               <i class="bi bi-briefcase-fill"></i>
-              <span><a href="mailto:sales@gmcmaroc.com">sales@gmcmaroc.com</a></span>
+              <span><a href="/cdn-cgi/l/email-protection#bdcedcd1d8cefddad0ded0dccfd2de93ded2d0"><span class="__cf_email__" data-cfemail="0370626f667043646e606e62716c602d606c6e">[email&#160;protected]</span></a></span>
             </div>
             <div class="footer-contact-item">
               <i class="bi bi-geo-alt-fill"></i>
@@ -1195,7 +1196,7 @@ html[dir="rtl"] .footer-links a::before{content:'←';}
 </div><!-- end main-site -->
 
 <!-- ═══════════════ SCRIPTS ═══════════════ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ════════════════════════════
    TRANSLATIONS
 ════════════════════════════ */
@@ -1439,6 +1440,98 @@ window.addEventListener("scroll",function(){
   if(window.scrollY>50)nb.classList.add("navbar-scrolled");
   else nb.classList.remove("navbar-scrolled");
 });
+
+/* ════════════════════════════
+   TEXT SCRAMBLE on section titles
+════════════════════════════ */
+class TextScramble{constructor(el){this.el=el;this.chars='!<>-_\\/[]{}—=+*^?#AVOCADO26';this.update=this.update.bind(this);}setText(newText){const old=this.el.innerText;const len=Math.max(old.length,newText.length);const p=new Promise(r=>{this.resolve=r;});this.queue=[];for(let i=0;i<len;i++){const from=old[i]||'';const to=newText[i]||'';const start=Math.floor(Math.random()*20);const end=start+Math.floor(Math.random()*20);this.queue.push({from,to,start,end});}cancelAnimationFrame(this.raf);this.frame=0;this.update();return p;}update(){let out='';let complete=0;for(let i=0,n=this.queue.length;i<n;i++){let{from,to,start,end,char}=this.queue[i];if(this.frame>=end){complete++;out+=to;}else if(this.frame>=start){if(!char||Math.random()<.28){char=this.randomChar();this.queue[i].char=char;}out+=`<span style="color:#7bcf5a;opacity:.7">${char}</span>`;}else{out+=from;}}this.el.innerHTML=out;if(complete===this.queue.length){this.resolve();}else{this.raf=requestAnimationFrame(this.update);this.frame++;}}randomChar(){return this.chars[Math.floor(Math.random()*this.chars.length)];}}
+const scrambleObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting&&!e.target.dataset.scrambled){e.target.dataset.scrambled='1';const orig=e.target.textContent;const sc=new TextScramble(e.target);sc.setText(orig);scrambleObs.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('.section-title-main,.terms-header h2').forEach(el=>scrambleObs.observe(el));
+
+/* ════════════════════════════
+   CONFETTI on form success
+════════════════════════════ */
+function launchConfetti(){const colors=['#7bcf5a','#f0d060','#a8e07e','#fff','#2b9348'];for(let i=0;i<90;i++){const c=document.createElement('div');const color=colors[Math.floor(Math.random()*colors.length)];const size=Math.random()*8+4;c.style.cssText=`position:fixed;top:-10px;left:${Math.random()*100}vw;width:${size}px;height:${size}px;background:${color};border-radius:${Math.random()>.5?'50%':'2px'};z-index:99999;pointer-events:none;`;document.body.appendChild(c);const duration=Math.random()*2+1.5;const drift=(Math.random()-.5)*200;const rot=Math.random()*720;c.animate([{transform:`translate(0,0) rotate(0deg)`,opacity:1},{transform:`translate(${drift}px,${window.innerHeight*.85}px) rotate(${rot}deg)`,opacity:0}],{duration:duration*1000,easing:'cubic-bezier(.25,.46,.45,.94)',fill:'forwards'});setTimeout(()=>c.remove(),duration*1000+100);}}
+const successModalEl=document.getElementById('successModal');
+if(successModalEl){new MutationObserver(m=>{m.forEach(mut=>{if(mut.attributeName==='style'&&successModalEl.style.display==='flex')launchConfetti();});}).observe(successModalEl,{attributes:true});}
+
+/* ════════════════════════════
+   MOUSE TRAIL sparks
+════════════════════════════ */
+const trailCanvas=document.createElement('canvas');
+trailCanvas.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9990;';
+document.body.appendChild(trailCanvas);
+const tc=trailCanvas.getContext('2d');
+function resizeCanvas(){trailCanvas.width=window.innerWidth;trailCanvas.height=window.innerHeight;}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);
+let sparks=[];
+document.addEventListener('mousemove',e=>{if(Math.random()>.65)return;sparks.push({x:e.clientX,y:e.clientY,vx:(Math.random()-.5)*2.5,vy:(Math.random()-1)*2.5,life:1,size:Math.random()*2.5+1,color:Math.random()>.5?'#7bcf5a':'#f0d060'});});
+(function animSparks(){tc.clearRect(0,0,trailCanvas.width,trailCanvas.height);sparks=sparks.filter(s=>s.life>0);sparks.forEach(s=>{tc.globalAlpha=s.life*.55;tc.fillStyle=s.color;tc.beginPath();tc.arc(s.x,s.y,s.size*s.life,0,Math.PI*2);tc.fill();s.x+=s.vx;s.y+=s.vy;s.vy+=.08;s.life-=.04;s.size*=.97;});tc.globalAlpha=1;requestAnimationFrame(animSparks);})();
+
+/* ════════════════════════════
+   PACK CARD shine sweep
+════════════════════════════ */
+document.querySelectorAll('.pack-card').forEach(card=>{
+  const shine=document.createElement('div');
+  shine.style.cssText='position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:22px;';
+  const shineInner=document.createElement('div');
+  shineInner.style.cssText='position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.12) 50%,transparent 60%);transform:skewX(-15deg);transition:left .5s ease;';
+  shine.appendChild(shineInner);card.appendChild(shine);
+  card.addEventListener('mouseenter',()=>{shineInner.style.left='150%';});
+  card.addEventListener('mouseleave',()=>{shineInner.style.left='-100%';});
+});
+
+/* ════════════════════════════
+   HERO TITLE letter-by-letter
+════════════════════════════ */
+(function(){
+  const title=document.querySelector('.hero-title');
+  if(!title)return;
+  setTimeout(()=>{
+    const nodes=[];title.childNodes.forEach(n=>nodes.push(n));
+    title.innerHTML='';let delay=0;
+    nodes.forEach(node=>{
+      if(node.nodeType===3){
+        node.textContent.split('').forEach(ch=>{
+          if(ch==='\n'||ch===' '){title.appendChild(document.createTextNode(ch));return;}
+          const sp=document.createElement('span');sp.style.cssText=`display:inline-block;opacity:0;transform:translateY(28px);animation:letterIn .5s ${delay}s cubic-bezier(.34,1.56,.64,1) forwards;`;sp.textContent=ch;title.appendChild(sp);delay+=0.04;
+        });
+      } else {
+        const cl=node.cloneNode(true);cl.style.cssText=`display:inline-block;opacity:0;animation:letterIn .4s ${delay}s ease forwards;`;title.appendChild(cl);delay+=0.04;
+      }
+    });
+  },900);
+  const lts=document.createElement('style');lts.textContent='@keyframes letterIn{to{opacity:1;transform:translateY(0);}}';document.head.appendChild(lts);
+})();
+
+/* ════════════════════════════
+   BACK TO TOP button
+════════════════════════════ */
+const btt=document.createElement('button');
+btt.innerHTML='<i class="bi bi-arrow-up-short" style="font-size:1.4rem;line-height:1;"></i>';
+btt.setAttribute('title','Retour en haut');
+btt.style.cssText='position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#7bcf5a,#2b9348);border:2px solid rgba(255,255,255,.2);color:#0d3320;font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:none;z-index:9000;opacity:0;transform:scale(.8) translateY(20px);transition:opacity .3s,transform .3s;box-shadow:0 4px 20px rgba(123,207,90,.45);';
+document.body.appendChild(btt);
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>500){btt.style.opacity='1';btt.style.transform='scale(1) translateY(0)';}
+  else{btt.style.opacity='0';btt.style.transform='scale(.8) translateY(20px)';}
+});
+btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ════════════════════════════
+   PULSING border on active input
+════════════════════════════ */
+const pStyle=document.createElement('style');
+pStyle.textContent='@keyframes fieldPulse{0%,100%{box-shadow:0 0 0 4px rgba(123,207,90,.12),0 4px 20px rgba(0,0,0,.2)}50%{box-shadow:0 0 0 7px rgba(123,207,90,.2),0 4px 24px rgba(0,0,0,.25)}}.form-field:focus{animation:fieldPulse 1.8s ease-in-out infinite;}';
+document.head.appendChild(pStyle);
+
+/* ════════════════════════════
+   FOOTER grid stagger entrance
+════════════════════════════ */
+const footerGrid=document.querySelector('.footer-grid');
+if(footerGrid){
+  new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.footer-brand,.footer-col').forEach((col,i)=>{col.style.opacity='0';col.style.transform='translateY(30px)';setTimeout(()=>{col.style.transition='opacity .6s ease,transform .6s ease';col.style.opacity='1';col.style.transform='none';},i*130);});}});},{threshold:.1}).observe(footerGrid);
+}
 </script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
