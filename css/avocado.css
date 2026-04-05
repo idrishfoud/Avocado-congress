@@ -1,61 +1,45 @@
 .bg-top {
   position: relative;
-  background-color: #556926 !important;
-  z-index: 10000; /* above navbar */
+  background-color: #0d3320 !important;
+  z-index: 10000;
 }
 
 .navbar {
-  background-color: white !important;
+  background-color: #0d3320 !important;
   position: fixed;
-  top: 50px; /* height of your top bar */
+  top: 50px;
   width: 100%;
   z-index: 9999;
+  border-bottom: 1px solid rgba(123, 207, 90, 0.15) !important;
 }
 
-.header-offset {
-  margin-top: 100px; /* push down your header image */
-}
-
-/* Navbar scrolled background */
-/* When scrolled */
 .navbar-scrolled {
-  background-color: white !important;
+  background-color: #0d3320 !important;
   position: fixed;
   top: 0;
   left: 0;
+  border-bottom: 1px solid rgba(123, 207, 90, 0.2) !important;
 }
 
-/* Mobile & tablet fixes */
-@media (max-width: 991px) {
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    /* above everything */
-    background-color: white;
-    /* ensure header background */
-  }
-
-  /* Force logo on left */
-  .navbar .navbar-brand {
-    margin-right: auto;
-  }
-
-  /* Change logo to gold on mobile/tablet */
-  #logo {
-    content: url("img/ramdlogo.png");
-    /* sets logo image */
-  }
+/* Nav links — blanc sur fond vert foncé */
+.navbar .nav-link,
+.navbar .nav-item.nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  transition: color 0.2s;
 }
+.navbar .nav-link:hover,
+.navbar .nav-item.nav-link:hover {
+  color: #7bcf5a !important;
+}
+
+/* Active link */
 .nav-link.active,
 .nav-link.active:hover {
-  color: #29a23a !important;
+  color: #7bcf5a !important;
 }
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
-  color: #29a23a !important;
+  color: #7bcf5a !important;
 }
 .navbar-dark .navbar-nav .nav-link::before {
   position: absolute;
@@ -64,16 +48,57 @@
   height: 2px;
   bottom: -1px;
   left: 50%;
-  background: #29a23a !important;
+  background: #7bcf5a !important;
   transition: 0.5s;
 }
+
+/* Lang buttons on dark navbar */
+.lang-btn {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+.lang-btn:hover,
+.lang-btn.active {
+  background: #7bcf5a !important;
+  color: #0d3320 !important;
+  border-color: #7bcf5a !important;
+}
+
+/* Hamburger icon */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+.navbar-toggler .fa-bars {
+  color: #fff !important;
+}
+
+/* Mobile & tablet */
+@media (max-width: 991px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: #0d3320 !important;
+  }
+  .navbar .navbar-brand {
+    margin-right: auto;
+  }
+  /* Collapse menu background */
+  .navbar-collapse {
+    background-color: #0d3320;
+    padding: 10px 20px 16px;
+    border-top: 1px solid rgba(123, 207, 90, 0.15);
+  }
+}
+
+/* Buttons */
 .btn-red {
   background: #d4101c !important;
   border-color: #d4101c !important;
   color: white !important;
 }
-
-/* REMOVE hover effect completely */
 .btn-red:hover,
 .btn-red:focus,
 .btn-red:active {
@@ -82,121 +107,72 @@
   color: white !important;
   box-shadow: none !important;
 }
-/* Remove bullets from dropdown menu */
+
+/* Dropdown */
 .dropdown-menu {
   list-style: none !important;
   padding-left: 0 !important;
   margin: 0;
+  background-color: #0d3320 !important;
+  border: 1px solid rgba(123, 207, 90, 0.2) !important;
+}
+.dropdown-menu li { list-style: none !important; }
+.dropdown-item {
+  color: rgba(255,255,255,0.8) !important;
+}
+.dropdown-item:hover {
+  background-color: rgba(123,207,90,0.15) !important;
+  color: #7bcf5a !important;
 }
 
-/* Optional: clean dropdown items */
-.dropdown-menu li {
-  list-style: none !important;
+/* Body */
+body { margin: 0; padding: 0; }
+
+.hero-wrapper {
+  padding-top: 95px;
+  width: 100%;
+}
+.hero-wrapper img.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 100vh;
+  object-fit: contain;
+  object-position: top center;
 }
 
+@media (max-width: 768px) {
+  .hero-image { width: 100%; height: 100%; object-fit: contain; }
+}
 
-/* Remove margin from body */
-body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .hero-wrapper {
-    padding-top: 95px; /* navbar + top bar height */
-    width: 100%;
-  }
-  
-  .hero-wrapper img.hero-image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  .hero-wrapper img.hero-image {
-    max-height: 100vh; /* viewport height */
-    object-fit: contain; /* show full image without cropping */
-    object-position: top center; /* keep important content visible */
-  }
-  
-  /* MOBILE FIX */
-  @media (max-width: 768px) {
-    .hero-image-container {
-      max-height: 60vh; /* smaller height for mobile */
-    }
-  
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-  
-  /* COUNTDOWN SECTION */
-  .countdown-section {
-    padding: 60px 20px;
-    background: #FFF;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* CONTAINER */
-  .countdown-container {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  /* SINGLE CARD */
-  .countdown-card {
-    width: 210px;
-    height: 170px;
-    background: #FFF;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s;
-  }
-  
-  .countdown-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  /* NUMBER */
-  .countdown-card h2 {
-    font-size: 45px;
-    margin: 0;
-    color: #2b9348;
-  }
-  
-  /* TEXT */
-  .countdown-card p {
-    margin: 5px 0 0 0;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-  
-    .hero-image {
-      height: 330px;
-    }
-  
-    .countdown-card {
-      width: 120px;
-      height: 120px;
-    }
-  
-    .countdown-card h2 {
-      font-size: 28px;
-    }
-  
-    .countdown-card p {
-      font-size: 14px;
-    }
-  
-  }
+/* COUNTDOWN */
+.countdown-section {
+  padding: 60px 20px;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+}
+.countdown-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.countdown-card {
+  width: 210px; height: 170px;
+  background: #FFF;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  transition: 0.3s;
+}
+.countdown-card:hover { transform: translateY(-5px); }
+.countdown-card h2 { font-size: 45px; margin: 0; color: #2b9348; }
+.countdown-card p { margin: 5px 0 0; font-size: 16px; font-weight: 500; }
+
+@media (max-width: 768px) {
+  .countdown-card { width: 120px; height: 120px; }
+  .countdown-card h2 { font-size: 28px; }
+  .countdown-card p { font-size: 14px; }
+}
